@@ -1,0 +1,13 @@
+type	chromosome	start	end	strand	field_a	field_b
+gene	chr1	1000	5000	+	GENE_A
+exon	chr1	1000	1200	+	GENE_A	1
+exon	chr1	3000	3300	+	GENE_A	2
+exon	chr1	4700	5000	+	GENE_A	3
+gene	chr1	8000	9500	-	GENE_B
+exon	chr1	8000	8300	-	GENE_B	1
+exon	chr1	9200	9500	-	GENE_B	2
+variant	chr1	3050	3050	+	C	T
+variant	chr1	8100	8100	-	G	A
+variant	chr1	6000	6000	+	A	G
+variant	chr1	4900	4902	+	TAG	T
+variant	chr1	2000	2000	+	A	AGG

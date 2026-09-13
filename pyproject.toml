@@ -1,0 +1,6 @@
+[project]
+name = "exercise-oop"
+version = "0.1.0"
+description = "Introduction to Object-Oriented Programming in Python with bioinformatics examples"
+requires-python = ">=3.11"
+dependencies = []
