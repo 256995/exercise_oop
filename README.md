@@ -7,7 +7,7 @@ build a small set of **classes** that model genomic annotation records
 Structure of the session:
 1. **Classes and objects** (theory) → **Task 1**
 2. **Inheritance and polymorphism** (theory) → **Task 2**
-3. **Task 3** — a longer, harder task you work through
+3. **Task 3** - a longer, harder task you work through
    independently, combining everything from Tasks 1 and 2.
 
 Write your own code from scratch in a single file, `oop_exercise.py`. 
@@ -66,7 +66,7 @@ GenomicFeature("chr1", 5000, 1000, "+")  # should raise ValueError
 Create a subclass `Exon(GenomicFeature)`:
 - Extra attribute: `exon_number` (int).
 - Must call `super().__init__(...)` to reuse the validation already written
-  in `GenomicFeature` — do not re-implement it.
+  in `GenomicFeature` - do not re-implement it.
 - Override `describe()` to also include the exon number, e.g.
   `"Exon chr1:1000-1200(+) exon #1"`.
 
@@ -81,7 +81,7 @@ features = [
 for feature in features:
     print(feature.describe())
 ```
-Each object should print its *own* version of `describe()` — that's
+Each object should print its *own* version of `describe()` - that's
 polymorphism: the loop only ever calls `feature.describe()`, without
 checking what type `feature` actually is.
 
@@ -133,7 +133,7 @@ one per line): genes, their exons, and a handful of variants, all on
 | `variant` | ref allele           | alt allele    |
 
 Each gene's row always comes before the rows of its own exons, so a single
-top-to-bottom pass over the file works fine — you don't need to handle an
+top-to-bottom pass over the file works fine - you don't need to handle an
 exon showing up before its gene.
 
 Write code that:
@@ -144,7 +144,7 @@ Write code that:
    lookup by anything fancier than a plain dict).
 2. Prints a report by calling `describe()` **polymorphically** on every
    `Gene` and every `Variant` object (i.e. iterate over one combined list
-   and just call `.describe()` — do not branch on type to decide what to
+   and just call `.describe()` - do not branch on type to decide what to
    print), and next to each gene also prints its `total_exon_length()`.
 3. For every `Variant`, prints which `Gene`(s) it falls inside (using
    `overlaps()`), or `"intergenic"` if it falls inside none.
@@ -165,4 +165,4 @@ exons)
 > every gene ("intergenic"), inside a gene *and* inside one of its 
 > exons, or inside a gene but **not** inside any of its exons (sitting 
 > in an intron or UTR). Make sure your code actually distinguishes all 
-> three — it's easy to accidentally collapse the last two into one.
+> three - it's easy to accidentally collapse the last two into one.
