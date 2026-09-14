@@ -38,6 +38,28 @@ class GenomicFeature:
         return f"{type(self).__name__} {self.chromosome}: {self.start}-{self.end}({self.strand})"
 
 
+class Gene(GenomicFeature):
+    def __init__(self, chromosome, start, end, strand, name):
+        super().__init__(chromosome, start, end, strand)
+        if isinstance(name, str):
+            self.name = name
+        else:
+            print("Error: Gene name must be a string.")
+        self.exons = []
+
+    def add_exon(self, exon):
+        self.exons.append(exon)
+        return 0
+
+    def total_exon_length(self):
+        total_length = 0
+        for exon in self.exons:
+            total_length = total_length + exon.length()
+        return total_length
+
+    def describe(self):
+        return f"{type(self).__name__} {self.name} {self.chromosome}: {self.start}-{self.end}({self.strand}), {len(self.exons)} exon(s)"
+
 class Exon(GenomicFeature):
     def __init__(self, chromosome, start, end, strand, exon_number):
         super().__init__(chromosome, start, end, strand)
@@ -67,3 +89,9 @@ if __name__ == "__main__":
     ]
     for feature in features:
         print(feature.describe())
+
+    gene_a = Gene("chr1", 1000, 6000, "-", "GeneA")
+    gene_a.add_exon(features[1])
+    gene_a.add_exon(features[2])
+    print(gene_a.total_exon_length())
+    print(gene_a.describe())
