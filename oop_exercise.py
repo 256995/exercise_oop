@@ -1,3 +1,6 @@
+from mimetypes import inited
+
+
 class GenomicFeature:
     def __init__(self, chromosome, start, end, strand):
         # check validity of variables and assign to the object
@@ -35,6 +38,17 @@ class GenomicFeature:
         return f"{type(self).__name__} {self.chromosome}: {self.start}-{self.end}({self.strand})"
 
 
+class Exon(GenomicFeature):
+    def __init__(self, chromosome, start, end, strand, exon_number):
+        super().__init__(chromosome, start, end, strand)
+        if isinstance(exon_number, int):
+            self.exon_number = exon_number
+        else:
+            print("Error: Exon_number must be an integer.")
+
+    def describe(self):
+        return f"{type(self).__name__} {self.chromosome}: {self.start}-{self.end}({self.strand}),no.: {self.exon_number}"
+
 if __name__ == "__main__":
     a = GenomicFeature("chr1", 1000, 5000, "+")
     b = GenomicFeature("chr1", 4800, 6000, "+")
@@ -45,3 +59,11 @@ if __name__ == "__main__":
     print(a.overlaps(b))
     print(a.overlaps(c))
     GenomicFeature("chr1", 5000, 1000, "+")
+
+    features = [
+        GenomicFeature("chr1", 1000, 5000, "+"),
+        Exon("chr1", 1000, 1200, "+", 1),
+        Exon("chr1", 3000, 3300, "+", 2),
+    ]
+    for feature in features:
+        print(feature.describe())
